@@ -3,6 +3,7 @@
 <html lang="en">
 
 	<HEAD>
+		<meta charset="utf-8">
 		<title>Odin Library Project</title>
 		<link rel="stylesheet" href="/css/style.css">
 	</HEAD>
@@ -12,7 +13,18 @@
 		<table id = "booksTable">
 		</table>
 
+      	<button type="button" id="newBookForm" name="newBookForm">New Book</button>
+		<div class = newBookContainer">
+	 		<form class="input" >
+	      		<input type="text" name="title" id="bookTitle">
+	      		<input type="text" name="author" id="bookAuthor">
+	      		<input type="number" name="pages" id="bookPages">
+	      		<label for="read"> Read?</label>
+	        	<input type="checkbox" name="read" id="bookRead">
 
+	      		<button type="button" id="newBook" name="newBook">Add Book to Library</button>
+			</form>
+		</div>
 		<script type="text/javascript" src="scripts/main.js"></script>
 	</body>
 </html>

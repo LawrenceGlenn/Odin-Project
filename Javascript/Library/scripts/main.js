@@ -43,6 +43,26 @@ function render(){
 	document.querySelector("#booksTable").innerHTML = htmlBooksTable
 }
 
+function addBook(){
+	let title = document.getElementById("bookTitle").value;
+	let author = document.getElementById("bookAuthor").value;
+	let pages = document.getElementById("bookPages").value;
+	let read = false;
 
+	if (document.getElementById("bookRead").checked){
+		read = true;
+	}
+
+	myLibrary.push(new Book(title,author,pages,read));
+	render();
+}
+
+
+
+let submitBook = document.getElementById('newBook')
+
+submitBook.addEventListener("click", function() {
+  addBook();
+});
 
 render();
