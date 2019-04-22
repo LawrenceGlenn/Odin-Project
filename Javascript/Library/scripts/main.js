@@ -59,7 +59,19 @@ function addBook(){
 
 
 
-let submitBook = document.getElementById('newBook')
+let submitBook = document.getElementById('newBook');
+let showForm = document.getElementById('newBookForm');
+let bookForm = document.querySelector(".newBookContainer");
+
+showForm.addEventListener("click", function() {
+  bookForm.classList.toggle("visible");
+  if (showForm.innerHTML == "Add book") {
+    showForm.innerHTML = "Hide form";
+  } else {
+    showForm.innerHTML = "Add book";
+  }
+});
+
 
 submitBook.addEventListener("click", function() {
   addBook();

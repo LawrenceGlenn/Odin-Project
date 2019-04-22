@@ -1,0 +1,7 @@
+.newBookContainer{
+	visibility: hidden;
+}
+
+.visible{
+	visibility: visible;
+}
