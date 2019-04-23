@@ -22,27 +22,26 @@ function addBookToLibrary(){
 function render(){
 
 	var libraryTable = document.querySelector("#booksTable");
-	while (libraryTable.firstChild) {
-	    libraryTable.removeChild(libraryTable.firstChild);
+
+	let entries = document.getElementsByClassName('bookRow');
+	for (let i = entries.length - 1; i >= 0; i--) {
+    	libraryTable.removeChild(entries[i]);
 	}
 
 	for (var i = 0; i < myLibrary.length; i++) {
 		let bookRow = document.createElement("tr");
+		bookRow.classList.add('bookRow');
 		let bookTitle = document.createElement("td");
-		let bookTitleText = document.createTextNode(myLibrary[i].title);
-		bookTitle.appendChild(bookTitleText);
-		let bookAuthor = document.createElement("td");
-		let bookAuthorText = document.createTextNode(myLibrary[i].author);
-		bookTitle.appendChild(bookAuthorText);
-		let bookPages = document.createElement("td");
-		let bookPagesText = document.createTextNode(myLibrary[i].pages);
-		bookTitle.appendChild(bookPagesText);
-		let bookRead = document.createElement("td");
-		let bookReadText = document.createTextNode(myLibrary[i].read);
-		bookTitle.appendChild(bookReadText);
+		bookTitle.innerHTML = myLibrary[i].title;
 		bookRow.appendChild(bookTitle);
+		let bookAuthor = document.createElement("td");
+		bookAuthor.innerHTML = myLibrary[i].author;
 		bookRow.appendChild(bookAuthor);
+		let bookPages = document.createElement("td");
+		bookPages.innerHTML = myLibrary[i].pages;
 		bookRow.appendChild(bookPages);
+		let bookRead = document.createElement("td");
+		bookRead.innerHTML = myLibrary[i].read;
 		bookRow.appendChild(bookRead);
 
 		let removeButton = document.createElement('input');
