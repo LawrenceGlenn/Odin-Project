@@ -55,6 +55,22 @@ function render(){
 		bookRow.appendChild(removeButton);
 
 		libraryTable.appendChild(bookRow);
+
+		let readButton = document.createElement('input');
+    	readButton.type = 'button';
+    	readButton.value = "Read?";
+    	readButton.id = i.toString();
+    	readButton.addEventListener("click", function() {
+      		if (myLibrary[this.id].read){
+      			myLibrary[this.id].read=false;
+      		}else{
+      			myLibrary[this.id].read=true;
+      		}
+      		render();
+    	});
+		bookRow.appendChild(readButton);
+
+		libraryTable.appendChild(bookRow);
 		}
 
 }
