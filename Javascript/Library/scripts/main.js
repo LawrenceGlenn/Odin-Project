@@ -20,28 +20,51 @@ function addBookToLibrary(){
 }
 
 function render(){
-	htmlBooksTable = "\
-			<tr>\
-				<th>Title</th>\
-				<th>Author</th>\
-				<th>Pages</th>\
-				<th>Already Read?</th>\
-			</tr>\
-			";
+
+	var libraryTable = document.querySelector("#booksTable");
+	while (libraryTable.firstChild) {
+	    libraryTable.removeChild(libraryTable.firstChild);
+	}
 
 	for (var i = 0; i < myLibrary.length; i++) {
-		htmlBooksTable += "\
-			<tr>\
-				<th>" + myLibrary[i].title + "</th>\
-				<th>" + myLibrary[i].author + "</th>\
-				<th>" + myLibrary[i].pages + "</th>\
-				<th>" + myLibrary[i].read + "</th>\
-			</tr>\
-			";
+		let bookRow = document.createElement("tr");
+		let bookTitle = document.createElement("td");
+		let bookTitleText = document.createTextNode(myLibrary[i].title);
+		bookTitle.appendChild(bookTitleText);
+		let bookAuthor = document.createElement("td");
+		let bookAuthorText = document.createTextNode(myLibrary[i].author);
+		bookTitle.appendChild(bookAuthorText);
+		let bookPages = document.createElement("td");
+		let bookPagesText = document.createTextNode(myLibrary[i].pages);
+		bookTitle.appendChild(bookPagesText);
+		let bookRead = document.createElement("td");
+		let bookReadText = document.createTextNode(myLibrary[i].read);
+		bookTitle.appendChild(bookReadText);
+		bookRow.appendChild(bookTitle);
+		bookRow.appendChild(bookAuthor);
+		bookRow.appendChild(bookPages);
+		bookRow.appendChild(bookRead);
+
+		let removeButton = document.createElement('input');
+    	removeButton.type = 'button';
+    	removeButton.value = "Remove";
+    	removeButton.id = i.toString();
+    	removeButton.addEventListener("click", function() {
+      		removeBook(this.id);
+    	});
+		bookRow.appendChild(removeButton);
+
+		libraryTable.appendChild(bookRow);
 		}
 
-	document.querySelector("#booksTable").innerHTML = htmlBooksTable
 }
+
+
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  render(myLibrary);
+}
+
 
 function addBook(){
 	let title = document.getElementById("bookTitle").value;
